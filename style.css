@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: #1a1a2e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+h1 {
+    color: #e0e0e0;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+/* ── Main visualizer box ── */
+.visualizer {
+    background: #3d5166;
+    border: 2px solid #546e8a;
+    border-radius: 10px;
+    width: 700px;
+    min-height: 220px;
+    padding: 28px 30px 22px;
+    position: relative;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+.vis-title {
+    text-align: center;
+    color: #e0e0e0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+}
+
+/* ── Dequeue area (top-left) ── */
+.dequeue-area {
+    position: absolute;
+    top: 58px;
+    left: 30px;
+    width: 70px;
+    height: 35px;
+}
+
+.dequeue-block {
+    width: 70px;
+    height: 35px;
+    border-radius: 4px;
+    opacity: 0;
+    transform: translateY(0);
+    transition: opacity 0.4s, transform 0.5s;
+}
+
+.dequeue-block.show {
+    opacity: 1;
+}
+
+.dequeue-block.fly-up {
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+/* ── Queue row ── */
+.queue-row-wrapper {
+    margin-top: 70px;
+    border-top: 2px solid #8aa8c0;
+    border-bottom: 2px solid #8aa8c0;
+    padding: 6px 0;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.queue-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 4px;
+}
+
+.q-block {
+    width: 70px;
+    height: 35px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: transform 0.5s ease, opacity 0.4s ease;
+}
+
+.q-block.slide-in {
+    animation: slideIn 0.5s ease forwards;
+}
+
+.q-block.slide-out {
+    animation: slideOut 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(80px); opacity: 0; }
+    to   { transform: translateX(0);   opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0);    opacity: 1; }
+    to   { transform: translateX(-80px); opacity: 0; }
+}
+
+/* ── Enqueue area (bottom-right) ── */
+.enqueue-area {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+    height: 35px;
+}
+
+.enqueue-block {
+    width: 70px;
+    height: 35px;
+    border-radius: 4px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s, transform 0.5s;
+}
+
+.enqueue-block.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Info bar ── */
+.info-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    color: #b0c4d8;
+    font-size: 0.85rem;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 1px;
+}
+
+/* ── Buttons ── */
+.btn-row {
+    display: flex;
+    gap: 18px;
+    margin-top: 28px;
+}
+
+button {
+    padding: 12px 40px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+}
+
+button:active { transform: scale(0.96); }
+
+#startBtn {
+    background: #27ae60;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(39,174,96,0.4);
+}
+
+#startBtn:hover { box-shadow: 0 6px 22px rgba(39,174,96,0.6); }
+#startBtn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+#stopBtn {
+    background: #e74c3c;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(231,76,60,0.4);
+}
+
+#stopBtn:hover { box-shadow: 0 6px 22px rgba(231,76,60,0.6); }
+#stopBtn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* label badges */
+.label {
+    font-size: 0.7rem;
+    color: #8aa8c0;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.side-label {
+    position: absolute;
+    font-size: 0.65rem;
+    color: #8aa8c0;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.label-dequeue { top: 98px; left: 30px; }
+.label-enqueue { bottom: 18px; right: 30px; }

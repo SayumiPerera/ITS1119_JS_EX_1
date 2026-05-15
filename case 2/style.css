@@ -1,0 +1,22 @@
+body {
+    background: black;
+}
+section {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+section > div {
+    width: 40px;
+    aspect-ratio: 1/1;
+    border: 1px solid brown;
+    margin: 0px;
+}

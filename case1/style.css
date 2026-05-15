@@ -1,0 +1,20 @@
+body {
+    background: black;
+}
+section {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+section > div {
+    width: 25px;
+    aspect-ratio: 4/1;
+    border: 1px solid brown;
+}
